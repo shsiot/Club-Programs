@@ -1,0 +1,30 @@
+
+int led = 13;
+
+void setup() {
+  // Make sure your LED is connected to Pin #13. 
+  
+  pinMode(13, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  float value = analogRead(A0);
+  Serial.println(value);
+
+  if(value < 1)
+  {
+  // The laser beam was interrupted. Activate tripwire. 
+    digitalWrite(led, HIGH);
+  }
+  else
+  {
+  // Laser tripwire is intact. 
+    digitalWrite(led, LOW);
+  }
+
+  
+}
+
+
