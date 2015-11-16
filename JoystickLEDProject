@@ -1,0 +1,66 @@
+int UD = 0;
+int LR = 0;
+const int upLedPin = 12;
+const int leftLedPin = 13;
+const int rightLedPin = 11;
+const int downLedPin = 10;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(upLedPin, OUTPUT);
+  pinMode(leftLedPin, OUTPUT);
+  pinMode(rightLedPin, OUTPUT);
+  pinMode(downLedPin, OUTPUT);
+}
+
+void loop() {
+  UD = analogRead(A0);
+  LR = analogRead(A1);
+  Serial.print("UD = ");
+  Serial.print(UD, DEC);
+  Serial.print(", LR = ");
+  Serial.println(LR, DEC);   
+
+
+
+  
+  if(UD > 550)
+  {
+    digitalWrite(upLedPin, HIGH);
+  }
+  else
+  {
+    digitalWrite(upLedPin, LOW);
+  }
+  
+  if(UD < 500)
+  {
+    digitalWrite(downLedPin, HIGH);
+  }
+  else
+  {
+    digitalWrite(downLedPin, LOW);
+  }
+  
+  if(LR > 550)
+  {
+    digitalWrite(rightLedPin, HIGH);
+  }
+  else
+  {
+    digitalWrite(rightLedPin, LOW);
+  }
+  
+  if(LR < 500)
+  {
+    digitalWrite(leftLedPin, HIGH);
+  }
+  else
+  {
+    digitalWrite(leftLedPin, LOW);
+  }
+  
+  
+  delay(50);
+}
+
